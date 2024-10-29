@@ -4,15 +4,15 @@ from datetime import datetime
 from pyrogram.enums import ChatType
 
 import config
-from AviaxMusic import app
-from AviaxMusic.core.call import Aviax, autoend
-from AviaxMusic.utils.database import get_client, is_active_chat, is_autoend
+from DAXXMUSIC import app
+from DAXXMUSIC.core.call import DAXX, autoend
+from DAXXMUSIC.utils.database import get_client, is_active_chat, is_autoend
 
 
 async def auto_leave():
     if config.AUTO_LEAVING_ASSISTANT:
         while not await asyncio.sleep(900):
-            from AviaxMusic.core.userbot import assistants
+            from DAXXMUSIC.core.userbot import assistants
 
             for num in assistants:
                 client = await get_client(num)
@@ -25,9 +25,9 @@ async def auto_leave():
                             ChatType.CHANNEL,
                         ]:
                             if (
-                                i.chat.id != config.LOG_GROUP_ID
-                                and i.chat.id != -1002040932096
-                                and i.chat.id != -1002040932096
+                                i.chat.id != config.LOGGER_ID
+                                and i.chat.id != -1001928799341
+                                and i.chat.id != -1001928799341
                             ):
                                 if left == 20:
                                     continue
@@ -59,7 +59,7 @@ async def auto_end():
                     continue
                 autoend[chat_id] = {}
                 try:
-                    await Aviax.stop_stream(chat_id)
+                    await DAXX.stop_stream(chat_id)
                 except:
                     continue
                 try:
